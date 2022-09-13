@@ -1,12 +1,13 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Empty } from '@common/empty';
+import { Login, Register } from '@pages';
 
 const App = () => (
   <div className='app'>
     <Routes>
-      <Route element={<Empty />} path='/' />
+      <Route element={<Login />} path='/login' />
+      <Route element={<Register />} path='/register' />
     </Routes>
   </div>
 );
