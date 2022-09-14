@@ -4,6 +4,8 @@
   margin-top: auto;
 
   &__list {
+    max-width: 70%;
+    margin: auto;
     list-style: none;
     display: flex;
     justify-content: space-between;
