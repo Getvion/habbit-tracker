@@ -17,10 +17,9 @@ button {
 }
 
 .app {
+  height: 100vh;
   max-width: 500px;
   margin: 0 auto;
-  min-height: 100vh;
-  max-height: 100vh;
   overflow: auto;
   background: var(#{--body-background-default});
 }

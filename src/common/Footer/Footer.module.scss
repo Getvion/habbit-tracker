@@ -1,0 +1,25 @@
+@import '../../styles/variabless.scss';
+
+.footer {
+  margin-top: auto;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.list {
+  &__link {
+    & * {
+      color: transparent;
+      stroke: #1e1e1e;
+
+      &:hover {
+        box-shadow: var(#{--element-shadow-default});
+      }
+    }
+  }
+}
