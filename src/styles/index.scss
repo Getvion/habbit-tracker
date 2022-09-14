@@ -1,7 +1,19 @@
 @import './variabless.scss';
 
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease-in-out;
+}
+
 body {
   font-family: 'Lato';
+}
+
+button {
+  cursor: pointer;
 }
 
 .app {

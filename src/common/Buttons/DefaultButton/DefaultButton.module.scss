@@ -1,0 +1,17 @@
+@import '../../../styles/variabless.scss';
+
+.button {
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 4px;
+  border: 1px solid var(--text-color-default);
+  background-color: var(#{--text-color-default});
+  color: var(#{--components-background-default});
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(#{--text-color-default});
+    background-color: var(#{--components-background-default});
+  }
+}

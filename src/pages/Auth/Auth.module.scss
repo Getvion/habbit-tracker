@@ -1,0 +1,59 @@
+@import '../../styles/variabless.scss';
+
+.auth {
+  min-height: 100vh;
+  max-width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 53px;
+  }
+
+  &__title {
+    color: var(#{--text-background-default});
+  }
+
+  &__link {
+    color: var(#{--text-background-default});
+    position: relative;
+    padding-right: 20px;
+
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      margin: auto;
+      width: 10px;
+      height: 3px;
+      background-color: #000;
+    }
+
+    &::before {
+      rotate: -45deg;
+      top: 60%;
+    }
+
+    &::after {
+      rotate: 45deg;
+      bottom: 50%;
+    }
+  }
+
+  &__bottom {
+    margin-top: 55px;
+    text-align: center;
+    width: 100%;
+
+    &__text {
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+}

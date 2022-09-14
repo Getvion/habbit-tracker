@@ -1,0 +1,9 @@
+.label {
+  display: block;
+  margin-bottom: 22px;
+
+  &__text {
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+}
