@@ -1,13 +1,16 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 import { Footer, Header } from '@common';
 
-import styles from './Main.module.scss';
+import styles from './Layout.module.scss';
 
-export const Main = () => (
+export const Layout = () => (
   <main className={styles.main}>
     <Header />
-    <div className={styles.content}>content</div>
+
+    <Outlet />
+
     <Footer />
   </main>
 );

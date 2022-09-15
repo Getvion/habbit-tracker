@@ -10,16 +10,11 @@
 
 body {
   font-family: 'Lato';
+  max-width: 500px;
+  margin: 0 auto;
+  overflow: auto;
 }
 
 button {
   cursor: pointer;
-}
-
-.app {
-  height: 100vh;
-  max-width: 500px;
-  margin: 0 auto;
-  overflow: auto;
-  background: var(#{--body-background-default});
 }

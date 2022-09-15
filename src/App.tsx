@@ -1,16 +1,20 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Login, Main, Register } from '@pages';
+import { Layout } from '@common';
+import { Calendar, Home, Login, Register, Settings } from '@pages';
 
 const App = () => (
-  <div className='app'>
-    <Routes>
-      <Route element={<Login />} path='/login' />
-      <Route element={<Register />} path='/register' />
-      <Route element={<Main />} path='/' />
-    </Routes>
-  </div>
+  <Routes>
+    <Route element={<Login />} path='/login' />
+    <Route element={<Register />} path='/register' />
+
+    <Route path='/' element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path='/calendar' element={<Calendar />} />
+      <Route path='/settings' element={<Settings />} />
+    </Route>
+  </Routes>
 );
 
 export default App;

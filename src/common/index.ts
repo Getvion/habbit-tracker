@@ -11,3 +11,6 @@ export { Header } from './Header/Header';
 
 // footer
 export { Footer } from './Footer/Footer';
+
+// layout
+export { Layout } from './Layout/Layout';
