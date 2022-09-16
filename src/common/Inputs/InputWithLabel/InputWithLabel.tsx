@@ -9,7 +9,7 @@ interface InputWithLabelProps {
   labelName: string;
   inputValue: string;
   setInputValue: React.ChangeEventHandler<HTMLInputElement>;
-  type: 'email' | 'password' | 'text';
+  type?: 'email' | 'password';
 }
 
 export const InputWithLabel: React.FC<InputWithLabelProps> = ({

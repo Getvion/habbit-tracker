@@ -26,7 +26,6 @@ export const Register = () => {
       </div>
       <form onSubmit={onFormSubmit} className={styles.auth__form}>
         <InputWithLabel
-          type='text'
           labelText='Имя'
           labelName='name'
           inputValue={RegisterValue.name}
