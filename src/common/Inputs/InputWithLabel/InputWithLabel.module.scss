@@ -6,4 +6,11 @@
     display: inline-block;
     margin-bottom: 8px;
   }
+
+  &__password {
+    &__error {
+      color: red;
+      font-size: 12px;
+    }
+  }
 }

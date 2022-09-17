@@ -1,5 +1,3 @@
-@import '../../styles/variabless.scss';
-
 .footer {
   margin-top: auto;
 
@@ -15,12 +13,21 @@
 
 .list {
   &__link {
-    & * {
+    * {
       color: transparent;
       stroke: #1e1e1e;
 
       &:hover {
         box-shadow: var(#{--element-shadow-default});
+      }
+    }
+  }
+
+  &__item {
+    &.active {
+      * {
+        color: rgb(148, 148, 148);
+        stroke: rgb(150, 150, 150);
       }
     }
   }
