@@ -10,6 +10,9 @@ export { DefaultButton } from './Buttons/DefaultButton/DefaultButton';
 // popups
 export { CreateHabbitPopup } from './Popups/CreateHabbitPopup/CreateHabbitPopup';
 
+// listitems
+export { HabbitsList } from './Lists/HabbitsList/HabbitsList';
+
 // header
 export { Header } from './Header/Header';
 
