@@ -1,9 +1,14 @@
+export interface IHabbit {
+  title: string;
+  content: string;
+}
+
 export interface IStore {
   createHabbitPopup: {
     isOpen: boolean;
-    habbitData: {
-      title: string;
-      content: string;
-    };
+    habbitData: IHabbit;
+  };
+  habbits: {
+    habbitsList: IHabbit[];
   };
 }
