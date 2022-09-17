@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ButtonWithIcon, DefaultButton, InputWithLabel } from '@common';
+import { isPasswordValid } from '@utils/helpers';
 
 import styles from './Auth.module.scss';
 
@@ -9,11 +10,22 @@ const initialRegisterValue = { name: '', email: '', pass: '', passConfirm: '' };
 
 export const Register = () => {
   const [RegisterValue, setRegisterValue] = useState(initialRegisterValue);
+  const [isPasswordError, setisPasswordError] = useState(false);
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setRegisterValue(initialRegisterValue);
+  };
+
+  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isPasswordValid(e.target.value)) {
+      setisPasswordError(false);
+    } else {
+      setisPasswordError(true);
+    }
+
+    setRegisterValue({ ...RegisterValue, pass: e.target.value });
   };
 
   return (
@@ -43,7 +55,8 @@ export const Register = () => {
           labelText='Пароль'
           labelName='pass'
           inputValue={RegisterValue.pass}
-          setInputValue={(e) => setRegisterValue({ ...RegisterValue, pass: e.target.value })}
+          error={isPasswordError}
+          setInputValue={onPasswordChange}
         />
         <InputWithLabel
           type='password'
@@ -52,7 +65,7 @@ export const Register = () => {
           inputValue={RegisterValue.passConfirm}
           setInputValue={(e) => setRegisterValue({ ...RegisterValue, passConfirm: e.target.value })}
         />
-        <DefaultButton type='submit' text='Зарегистрироваться' />
+        <DefaultButton type='submit' text='Зарегистрироваться' disabled={isPasswordError} />
       </form>
       <div className={styles.auth__bottom}>
         <span className={styles.auth__bottom__text}>or sighn up with </span>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ButtonWithIcon, DefaultButton, InputWithLabel } from '@common';
+import { isPasswordValid } from '@utils/helpers';
 
 import styles from './Auth.module.scss';
 
@@ -9,11 +10,22 @@ const initialLoginValue = { email: '', pass: '' };
 
 export const Login = () => {
   const [loginValue, setLoginValue] = useState(initialLoginValue);
+  const [isPasswordError, setisPasswordError] = useState(false);
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     setLoginValue(initialLoginValue);
+  };
+
+  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isPasswordValid(e.target.value)) {
+      setisPasswordError(false);
+    } else {
+      setisPasswordError(true);
+    }
+
+    setLoginValue({ ...loginValue, pass: e.target.value });
   };
 
   return (
@@ -38,9 +50,10 @@ export const Login = () => {
           labelText='Пароль'
           labelName='pass'
           inputValue={loginValue.pass}
-          setInputValue={(e) => setLoginValue({ ...loginValue, pass: e.target.value })}
+          setInputValue={onPasswordChange}
+          error={isPasswordError}
         />
-        <DefaultButton type='submit' text='Войти' />
+        <DefaultButton type='submit' text='Войти' disabled={isPasswordError} />
       </form>
       <div className={styles.auth__bottom}>
         <span className={styles.auth__bottom__text}>or login with </span>
