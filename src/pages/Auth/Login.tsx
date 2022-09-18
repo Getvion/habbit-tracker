@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ButtonWithIcon, DefaultButton, InputWithLabel } from '@common';
-import { isPasswordValid } from '@utils/helpers';
+import { isEmailValid, isPasswordValid } from '@utils/helpers';
 
 import styles from './Auth.module.scss';
 
@@ -10,7 +10,9 @@ const initialLoginValue = { email: '', pass: '' };
 
 export const Login = () => {
   const [loginValue, setLoginValue] = useState(initialLoginValue);
-  const [isPasswordError, setisPasswordError] = useState(false);
+
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState(isPasswordValid(''));
+  const [emailErrorMessage, setEmailErrorMessage] = useState(isEmailValid(''));
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,12 +20,14 @@ export const Login = () => {
     setLoginValue(initialLoginValue);
   };
 
+  const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailErrorMessage(isEmailValid(e.target.value));
+
+    setLoginValue({ ...loginValue, email: e.target.value });
+  };
+
   const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (isPasswordValid(e.target.value)) {
-      setisPasswordError(false);
-    } else {
-      setisPasswordError(true);
-    }
+    setPasswordErrorMessage(isPasswordValid(e.target.value));
 
     setLoginValue({ ...loginValue, pass: e.target.value });
   };
@@ -42,7 +46,8 @@ export const Login = () => {
           labelText='Почта'
           labelName='email'
           inputValue={loginValue.email}
-          setInputValue={(e) => setLoginValue({ ...loginValue, email: e.target.value })}
+          setInputValue={onEmailChange}
+          errorMessage={emailErrorMessage}
         />
 
         <InputWithLabel
@@ -51,9 +56,13 @@ export const Login = () => {
           labelName='pass'
           inputValue={loginValue.pass}
           setInputValue={onPasswordChange}
-          error={isPasswordError}
+          errorMessage={passwordErrorMessage}
         />
-        <DefaultButton type='submit' text='Войти' disabled={isPasswordError} />
+        <DefaultButton
+          type='submit'
+          text='Войти'
+          disabled={Boolean(passwordErrorMessage) || Boolean(emailErrorMessage)}
+        />
       </form>
       <div className={styles.auth__bottom}>
         <span className={styles.auth__bottom__text}>or login with </span>

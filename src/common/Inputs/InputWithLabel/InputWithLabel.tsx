@@ -10,17 +10,26 @@ interface InputWithLabelProps {
   inputValue: string;
   setInputValue: React.ChangeEventHandler<HTMLInputElement>;
   type?: 'email' | 'password';
+  errorMessage?: string;
 }
 
-export const InputWithLabel: React.FC<InputWithLabelProps> = ({
-  labelText,
-  labelName,
-  inputValue,
-  type,
-  setInputValue
-}) => (
-  <label className={styles.label} htmlFor={labelName}>
-    <span className={styles.label__text}>{labelText}</span>
-    <Input name={labelName} value={inputValue} type={type} setValue={setInputValue} />
-  </label>
-);
+export const InputWithLabel: React.FC<InputWithLabelProps> = (props) => {
+  const { labelText, labelName, inputValue, type, setInputValue, errorMessage } = props;
+
+  return (
+    <label className={styles.label} htmlFor={labelName}>
+      <span className={styles.label__text}>{labelText}</span>
+      <Input
+        name={labelName}
+        value={inputValue}
+        type={type}
+        setValue={setInputValue}
+        error={Boolean(errorMessage)}
+      />
+
+      {errorMessage && inputValue.length ? (
+        <span className={styles.label__password__error}>{errorMessage}</span>
+      ) : null}
+    </label>
+  );
+};

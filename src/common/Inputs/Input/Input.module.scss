@@ -6,8 +6,7 @@
   border-radius: 4px;
   padding: 0 10px;
 
-  &:invalid,
   &.error {
-    border: 1px solid red;
+    border: 2px solid red;
   }
 }

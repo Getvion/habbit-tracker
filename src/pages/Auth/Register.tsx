@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ButtonWithIcon, DefaultButton, InputWithLabel } from '@common';
-import { isPasswordValid } from '@utils/helpers';
+import { isEmailValid, isPasswordValid } from '@utils/helpers';
 
 import styles from './Auth.module.scss';
 
-const initialRegisterValue = { name: '', email: '', pass: '', passConfirm: '' };
+const initialRegisterValue = { name: '', email: '', pass: '' };
 
 export const Register = () => {
-  const [RegisterValue, setRegisterValue] = useState(initialRegisterValue);
-  const [isPasswordError, setisPasswordError] = useState(false);
+  const [registerValue, setRegisterValue] = useState(initialRegisterValue);
+
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState(isPasswordValid(''));
+  const [emailErrorMessage, setEmailErrorMessage] = useState(isEmailValid(''));
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -18,14 +20,16 @@ export const Register = () => {
     setRegisterValue(initialRegisterValue);
   };
 
-  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (isPasswordValid(e.target.value)) {
-      setisPasswordError(false);
-    } else {
-      setisPasswordError(true);
-    }
+  const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmailErrorMessage(isEmailValid(e.target.value));
 
-    setRegisterValue({ ...RegisterValue, pass: e.target.value });
+    setRegisterValue({ ...registerValue, email: e.target.value });
+  };
+
+  const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPasswordErrorMessage(isPasswordValid(e.target.value));
+
+    setRegisterValue({ ...registerValue, pass: e.target.value });
   };
 
   return (
@@ -40,32 +44,30 @@ export const Register = () => {
         <InputWithLabel
           labelText='Имя'
           labelName='name'
-          inputValue={RegisterValue.name}
-          setInputValue={(e) => setRegisterValue({ ...RegisterValue, name: e.target.value })}
+          inputValue={registerValue.name}
+          setInputValue={(e) => setRegisterValue({ ...registerValue, name: e.target.value })}
         />
         <InputWithLabel
           type='email'
           labelText='Почта'
           labelName='email'
-          inputValue={RegisterValue.email}
-          setInputValue={(e) => setRegisterValue({ ...RegisterValue, email: e.target.value })}
+          inputValue={registerValue.email}
+          setInputValue={onEmailChange}
+          errorMessage={emailErrorMessage}
         />
         <InputWithLabel
           type='password'
           labelText='Пароль'
           labelName='pass'
-          inputValue={RegisterValue.pass}
-          error={isPasswordError}
+          inputValue={registerValue.pass}
           setInputValue={onPasswordChange}
+          errorMessage={passwordErrorMessage}
         />
-        <InputWithLabel
-          type='password'
-          labelText='Повторите пароль'
-          labelName='passConfirm'
-          inputValue={RegisterValue.passConfirm}
-          setInputValue={(e) => setRegisterValue({ ...RegisterValue, passConfirm: e.target.value })}
+        <DefaultButton
+          type='submit'
+          text='Зарегистрироваться'
+          disabled={Boolean(passwordErrorMessage) || Boolean(emailErrorMessage)}
         />
-        <DefaultButton type='submit' text='Зарегистрироваться' disabled={isPasswordError} />
       </form>
       <div className={styles.auth__bottom}>
         <span className={styles.auth__bottom__text}>or sighn up with </span>
