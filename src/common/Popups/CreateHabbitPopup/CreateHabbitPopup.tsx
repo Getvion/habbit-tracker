@@ -4,19 +4,20 @@
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { IHabbit } from 'types/interfaces';
 
-import { DefaultButton, Input, Textarea } from '@common';
+import { CustomSelect, DefaultButton, Input, Textarea } from '@common';
 import { setHabbitData, setPopupClose } from '@features/actions';
 import { selectCreateHabbitPopup } from '@features/selectors';
 
 import styles from './CreateHabbitPopup.module.scss';
 
-const initialPopupState = { title: '', content: '' };
+const initialHabbitPopupState: IHabbit = { title: '', content: '', period: 'dayly' };
 
 export const CreateHabbitPopup = () => {
   const dispatch = useDispatch();
 
-  const [habbitDataValue, setHabbitDataValue] = useState(initialPopupState);
+  const [habbitDataValue, setHabbitDataValue] = useState<IHabbit>(initialHabbitPopupState);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const { isOpen } = useSelector(selectCreateHabbitPopup);
@@ -26,6 +27,7 @@ export const CreateHabbitPopup = () => {
 
     dispatch(setHabbitData(habbitDataValue));
     dispatch(setPopupClose());
+    setHabbitDataValue(initialHabbitPopupState);
   };
 
   const onClosePopup = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -59,6 +61,15 @@ export const CreateHabbitPopup = () => {
             placeholder='описание привычки'
             value={habbitDataValue.content}
             setValue={(e) => setHabbitDataValue({ ...habbitDataValue, content: e.target.value })}
+          />
+          <CustomSelect
+            onChange={(obj) => setHabbitData({ ...habbitDataValue, period: obj?.value })}
+            nameOfSelect='habbit-period'
+            options={[
+              { label: 'Ежедневно', value: 'dayly' },
+              { label: 'Еженедельно', value: 'weekly' },
+              { label: 'Ежемесячно', value: 'monthly' }
+            ]}
           />
           <DefaultButton
             onClick={() => dispatch(setPopupClose())}
