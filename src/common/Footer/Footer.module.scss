@@ -1,5 +1,11 @@
 .footer {
-  margin-top: auto;
+  position: fixed;
+  bottom: 0;
+  background: #000;
+  padding-top: 6px;
+  padding-bottom: 3px;
+  width: inherit;
+  max-width: inherit;
 
   &__list {
     max-width: 70%;
@@ -14,20 +20,13 @@
 .list {
   &__link {
     * {
+      max-width: 24px;
+      max-height: 24px;
       color: transparent;
       stroke: #1e1e1e;
 
       &:hover {
         box-shadow: var(#{--element-shadow-default});
-      }
-    }
-  }
-
-  &__item {
-    &.active {
-      * {
-        color: rgb(148, 148, 148);
-        stroke: rgb(150, 150, 150);
       }
     }
   }
