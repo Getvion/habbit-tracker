@@ -1,4 +1,5 @@
 // inputs
+export { CustomSelect } from './Inputs/CustomSelect/CustomSelect';
 export { Input } from './Inputs/Input/Input';
 export { InputWithLabel } from './Inputs/InputWithLabel/InputWithLabel';
 export { Textarea } from './Inputs/Textarea/Textarea';

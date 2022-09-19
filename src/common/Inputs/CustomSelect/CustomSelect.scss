@@ -1,0 +1,28 @@
+.react-select-container {
+  .react-select__control {
+    background-color: var(#{--body-background-default});
+  }
+
+  .react-select__indicator-separator {
+    display: none;
+  }
+
+  .react-select__menu {
+    background-color: var(#{--body-background-default});
+  }
+
+  .react-select__option {
+    color: var(#{--text-color-default});
+    background-color: var(#{--body-background-default});
+
+    &:hover {
+      background-color: var(#{--components-background-default});
+    }
+  }
+
+  .react-select__single-value {
+    color: var(#{--text-color-default});
+  }
+}
+
+// https://stackoverflow.com/questions/63212723/using-dark-mode-in-react-select - all selectors for react-select
