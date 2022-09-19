@@ -1,0 +1,58 @@
+// calendar colors
+$color-text-light: #434141;
+$color-text-dark: #fff;
+
+$color-placeholder-light: rgba(0, 0, 0, 0.5);
+$color-placeholder-dark: rgba(0, 0, 0, 0.5);
+
+$color-additional-light: rgb(100, 188, 255);
+$color-additional-dark: #93b1ff;
+
+$color-additional7-light: rgba(100, 188, 255, 0.7);
+$color-additional7-dark: rgba(147, 177, 255, 0.7);
+
+$background-color-calendar-light: #ededed;
+$background-color-calendar-dark: #3a3e42;
+
+$background-color-calendar-header-light: rgb(136, 202, 252);
+$background-color-calendar-header-dark: #575c63;
+
+$images-arrow-light: url('../assets/images/icons/arrow_white.svg');
+$images-arrow-dark: url('../assets/images/icons/arrow.svg');
+
+:root {
+  // calendar text color
+  --color-text-light: #{$color-text-light};
+  --color-text-dark: #{$color-text-dark};
+  --color-text-default: var(#{--color-text-light});
+
+  // calendar placeholder color
+  --color-placeholder-light: #{$color-placeholder-light};
+  --color-placeholder-dark: #{$color-placeholder-dark};
+  --color-placeholder-default: var(#{--color-placeholder-light});
+
+  // calendar additional color
+  --color-additional-light: #{$color-additional-light};
+  --color-additional-dark: #{$color-additional-dark};
+  --color-additional-default: var(#{--color-additional-light});
+
+  // calendar additional7 color
+  --color-additional7-light: #{$color-additional7-light};
+  --color-additional7-dark: #{$color-additional7-dark};
+  --color-additional7-default: var(#{--color-additional7-light});
+
+  // calendar background color
+  --background-color-calendar-light: #{$background-color-calendar-light};
+  --background-color-calendar-dark: #{$background-color-calendar-dark};
+  --background-color-calendar-default: var(#{--background-color-calendar-light});
+
+  // calendar background color header
+  --background-color-calendar-header-light: #{$background-color-calendar-header-light};
+  --background-color-calendar-header-dark: #{$background-color-calendar-header-dark};
+  --background-color-calendar-header-default: var(#{--background-color-calendar-header-light});
+
+  // calendar image arrow
+  --images-arrow-light: #{$images-arrow-light};
+  --images-arrow-dark: #{$images-arrow-dark};
+  --images-arrow-default: var(#{--images-arrow-light});
+}
