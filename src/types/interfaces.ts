@@ -1,16 +1,14 @@
 export interface IHabbit {
   title: string;
   content: string;
+  period: 'dayly' | 'weekly' | 'monthly';
 }
 
 export interface IStore {
-  createHabbitPopup: {
-    isOpen: boolean;
-    habbitData: IHabbit;
-  };
-  habbits: {
-    habbitsList: IHabbit[];
-  };
+  createHabbitPopup: { isOpen: boolean; habbitData: IHabbit };
+  selectedHabbitPopup: { isOpen: boolean; habbitData: IHabbit };
+  habbits: { habbitsList: IHabbit[] };
+  theme: string;
 }
 
 export interface ICalendarDay {

@@ -1,9 +1,27 @@
 .header {
   margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  &__name {
+    color: var(#{--text-color-default});
+  }
 
   &__date {
+    color: var(#{--text-color-default});
     font-size: 14px;
     opacity: 0.5;
     font-weight: 700;
+  }
+
+  &__theme {
+    background-color: inherit;
+    border: none;
+    color: inherit;
+
+    svg {
+      stroke: var(#{--text-color-default});
+    }
   }
 }

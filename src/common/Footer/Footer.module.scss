@@ -1,7 +1,7 @@
 .footer {
   position: fixed;
   bottom: 0;
-  background: var(#{--components-background-default});
+  background-color: var(#{--components-background-default});
   box-shadow: var(#{--element-shadow-default});
   border-radius: 10px 10px 0 0;
   padding-top: 6px;

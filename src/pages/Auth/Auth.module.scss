@@ -14,11 +14,11 @@
   }
 
   &__title {
-    color: var(#{--text-background-default});
+    color: var(#{--text-color-default});
   }
 
   &__link {
-    color: var(#{--text-background-default});
+    color: var(#{--text-color-default});
     position: relative;
     padding-right: 20px;
 
@@ -30,7 +30,7 @@
       margin: auto;
       width: 10px;
       height: 3px;
-      background-color: #000;
+      background-color: var(#{--text-color-default});
     }
 
     &::before {
@@ -48,6 +48,7 @@
     margin-top: 55px;
     text-align: center;
     width: 100%;
+    color: var(#{--text-color-default});
 
     &__text {
       display: block;

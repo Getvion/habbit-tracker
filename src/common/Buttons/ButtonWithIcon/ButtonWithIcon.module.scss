@@ -6,5 +6,10 @@
   width: 100%;
   padding: 7px 0;
   border-radius: 4px;
-  border: 1px solid var(--text-color-default);
+  border: 1px solid var(#{--text-color-default});
+  background-color: var(#{--body-background-default});
+
+  &:hover {
+    background-color: var(#{--text-color-default});
+  }
 }

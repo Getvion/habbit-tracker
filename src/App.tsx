@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { CreateHabbitPopup, Layout, SelectedHabbitPopup } from '@common';
 import { Calendar, Home, Login, Register, Settings } from '@pages';
+import { useTheme } from '@utils/hooks';
 
 const App = () => {
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <>
@@ -30,6 +34,7 @@ const App = () => {
           />
           <Route path='/settings' element={<Settings />} />
         </Route>
+        <Route path='*' element={<Navigate replace to='/' />} />
       </Routes>
     </>
   );

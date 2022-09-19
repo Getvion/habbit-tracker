@@ -5,7 +5,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { IHabbit } from 'types/interfaces';
 
-import { setPopupOpen } from '@features/actions';
+import { setSelectedHabbitPopupOpen } from '@features/actions';
 
 import styles from './HabbitsList.module.scss';
 
@@ -21,8 +21,7 @@ export const HabbitsList: React.FC<HabbitsListProps> = (props) => {
 
   const onItemClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if ((e.target as Element).classList.contains(styles.item)) {
-      // заменить на другой попап (попап с конпкретной таской для подробного описания и редкатирования (этот попап еще не создан))
-      dispatch(setPopupOpen());
+      dispatch(setSelectedHabbitPopupOpen());
     }
   };
 

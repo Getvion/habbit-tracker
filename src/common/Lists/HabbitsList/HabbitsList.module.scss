@@ -3,6 +3,7 @@
 
   &__title {
     padding-left: 10px;
+    color: var(#{--text-color-default});
   }
 }
 
@@ -22,6 +23,7 @@
 
   &__title {
     font-size: 1.2rem;
+    color: var(#{--text-color-default});
   }
 
   &__input {
