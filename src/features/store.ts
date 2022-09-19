@@ -1,9 +1,16 @@
-import { createHabbitPopupReducer, habbitsReducer } from '@features/reducers';
+import {
+  createHabbitPopupReducer,
+  habbitsReducer,
+  selectedHabbitPopupReducer,
+  themeReducer
+} from '@features/reducers';
 import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   reducer: {
     createHabbitPopup: createHabbitPopupReducer,
-    habbits: habbitsReducer
+    selectedHabbitPopup: selectedHabbitPopupReducer,
+    habbits: habbitsReducer,
+    theme: themeReducer
   }
 });

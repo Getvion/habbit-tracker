@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { CreateHabbitPopup, Layout } from '@common';
+import { CreateHabbitPopup, Layout, SelectedHabbitPopup } from '@common';
 import { Calendar, Home, Login, Register, Settings } from '@pages';
 
 const App = () => {
@@ -10,6 +10,7 @@ const App = () => {
   return (
     <>
       <CreateHabbitPopup />
+      <SelectedHabbitPopup />
 
       <Routes>
         <Route element={<Login />} path='/login' />

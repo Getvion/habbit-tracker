@@ -10,7 +10,7 @@ export { DefaultButton } from './Buttons/DefaultButton/DefaultButton';
 
 // popups
 export { CreateHabbitPopup } from './Popups/CreateHabbitPopup/CreateHabbitPopup';
-
+export { SelectedHabbitPopup } from './Popups/SelectedHabbitPopup/SelectedHabbitPopup';
 // listitems
 export { HabbitsList } from './Lists/HabbitsList/HabbitsList';
 

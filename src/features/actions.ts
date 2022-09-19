@@ -4,3 +4,9 @@ export {
   setPopupClose,
   setPopupOpen
 } from './createHabbitPopup/createHabbitPopupSlice';
+export {
+  setSelectedHabbitPopupClose,
+  setSelectedHabbitPopupData,
+  setSelectedHabbitPopupOpen
+} from './SelectedHabbitPopup/SelectedHabbitPopupSlice';
+export { setTheme } from './theme/themeSlice';
