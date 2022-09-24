@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { ILogin } from 'types/interfaces';
 
 import { ButtonWithIcon, DefaultButton, InputWithLabel } from '@common';
+import { login } from '@features/actions';
 import { isEmailValid, isPasswordValid } from '@utils/helpers';
+import { useAppDispatch } from '@utils/hooks';
 
 import styles from './Auth.module.scss';
 
-const initialLoginValue = { email: '', pass: '' };
+const initialLoginValue = { email: '', password: '' };
 
 export const Login = () => {
-  const [loginValue, setLoginValue] = useState(initialLoginValue);
+  const dispatch = useAppDispatch();
+
+  const [loginValue, setLoginValue] = useState<ILogin>(initialLoginValue);
 
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(isPasswordValid(''));
   const [emailErrorMessage, setEmailErrorMessage] = useState(isEmailValid(''));
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    dispatch(login(loginValue));
 
     setLoginValue(initialLoginValue);
   };
@@ -29,7 +36,7 @@ export const Login = () => {
   const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordErrorMessage(isPasswordValid(e.target.value));
 
-    setLoginValue({ ...loginValue, pass: e.target.value });
+    setLoginValue({ ...loginValue, password: e.target.value });
   };
 
   return (
@@ -54,7 +61,7 @@ export const Login = () => {
           type='password'
           labelText='Пароль'
           labelName='pass'
-          inputValue={loginValue.pass}
+          inputValue={loginValue.password}
           setInputValue={onPasswordChange}
           errorMessage={passwordErrorMessage}
         />

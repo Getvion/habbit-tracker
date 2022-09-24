@@ -18,10 +18,11 @@ export const register = createAsyncThunk('auth/register', async (user: IRegister
 );
 
 // Login user
-export const login = createAsyncThunk('auth/login', async (userData) =>
+export const login = createAsyncThunk('auth/login', async (userData: ILogin) =>
   authService.login(userData)
 );
 
+// logout user
 export const logout = createAsyncThunk('auth/logout', async () => {
   await authService.logout();
 });

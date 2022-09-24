@@ -11,12 +11,8 @@ const register = async (userData: IRegister) => {
 };
 
 // login user
-const login = async (userData: { password: string; email: string }) => {
-  const response = await axios.post(`${BASE_URL}/users/login`, userData);
-
-  if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data));
-  }
+const login = async (userData: ILogin) => {
+  const response = await axios.post(`${BASE_URL}/login`, userData);
 
   return response.data;
 };
