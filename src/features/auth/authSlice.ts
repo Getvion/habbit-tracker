@@ -1,15 +1,11 @@
-// todo переделать регистрацию
+import { ILogin, IRegister } from 'types/interfaces';
 
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 import { authService } from './authSevice';
 
-// Get user from localStorage
-const localUser = localStorage.getItem('user');
-const user = localUser ? JSON.parse(localUser) : '';
-
 const initialState = {
-  user: user || null,
+  user: null,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -17,8 +13,8 @@ const initialState = {
 };
 
 // Register user
-export const register = createAsyncThunk('auth/register', async (userData) =>
-  authService.register(userData)
+export const register = createAsyncThunk('auth/register', async (user: IRegister) =>
+  authService.register(user)
 );
 
 // Login user

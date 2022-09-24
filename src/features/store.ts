@@ -1,4 +1,5 @@
 import {
+  authReducer,
   createHabbitPopupReducer,
   habbitsReducer,
   selectedHabbitPopupReducer,
@@ -8,6 +9,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
     createHabbitPopup: createHabbitPopupReducer,
     selectedHabbitPopup: selectedHabbitPopupReducer,
     habbits: habbitsReducer,

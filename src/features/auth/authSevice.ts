@@ -1,14 +1,11 @@
 import axios from 'axios';
+import { ILogin, IRegister } from 'types/interfaces';
 
-const BASE_URL = 'http://localhoset:5000/api';
+const BASE_URL = 'http://localhost:5000';
 
-// register user
-const register = async (userData: { name: string; password: string; email: string }) => {
-  const response = await axios.post(`${BASE_URL}/users/register`, userData);
-
-  if (response.data) {
-    localStorage.setItem('user', JSON.stringify(response.data));
-  }
+// Register user
+const register = async (userData: IRegister) => {
+  const response = await axios.post(`${BASE_URL}/register`, userData);
 
   return response.data;
 };

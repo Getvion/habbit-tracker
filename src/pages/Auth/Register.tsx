@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { IRegister } from 'types/interfaces';
 
 import { ButtonWithIcon, DefaultButton, InputWithLabel } from '@common';
+import { register } from '@features/actions';
 import { isEmailValid, isPasswordValid } from '@utils/helpers';
+import { useAppDispatch } from '@utils/hooks';
 
 import styles from './Auth.module.scss';
 
-const initialRegisterValue = { name: '', email: '', pass: '' };
+const initialRegisterValue = { name: '', email: '', password: '' };
 
 export const Register = () => {
-  const [registerValue, setRegisterValue] = useState(initialRegisterValue);
+  const dispatch = useAppDispatch();
+
+  const [registerValue, setRegisterValue] = useState<IRegister>(initialRegisterValue);
 
   const [passwordErrorMessage, setPasswordErrorMessage] = useState(isPasswordValid(''));
   const [emailErrorMessage, setEmailErrorMessage] = useState(isEmailValid(''));
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    dispatch(register(registerValue));
 
     setRegisterValue(initialRegisterValue);
   };
@@ -29,7 +36,7 @@ export const Register = () => {
   const onPasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPasswordErrorMessage(isPasswordValid(e.target.value));
 
-    setRegisterValue({ ...registerValue, pass: e.target.value });
+    setRegisterValue({ ...registerValue, password: e.target.value });
   };
 
   return (
@@ -59,7 +66,7 @@ export const Register = () => {
           type='password'
           labelText='Пароль'
           labelName='pass'
-          inputValue={registerValue.pass}
+          inputValue={registerValue.password}
           setInputValue={onPasswordChange}
           errorMessage={passwordErrorMessage}
         />
